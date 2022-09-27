@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<head>
+    <style>
+      body {
+        color : white;
+        background-color : black;
+      }
+      .section {
+        margin : auto;
+        padding: 50px 5% 0px;
+        width : 50%;
+        background-color: rgb(32, 32, 32);
+      }
+      .def {
+        border-top: 1px solid white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1>Definitions</h1>
+        <div class="def" id="def_neighborhood">
+            <p>
+                A <b>neighborhood</b> centered on \(p\) with radius \(\varepsilon \gt 0\) is the set of all points
+                that are within distance \(\varepsilon\) of \(p\). $$N(p,\varepsilon) = \lbrace x : d(x,p) \lt \varepsilon \rbrace$$
+            </p>
+        </div>
+        <div class="def" id="def_interiorpt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is an <b>interior point</b> of \(A\) 
+                iff there exists a neighborhood around \(p\) contained inside \(A\).
+                $$p \text{ is an interior point of } A \iff \exists \varepsilon \gt 0, N(p,\varepsilon) \subset A$$
+            </p>
+        </div>
+        <div class="def" id="def_interior">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). The <b>interior</b> of \(A\) is the set of all interior points of \(A\), 
+                and is denoted \(\operatorname{int} A\)
+                $$\operatorname{int} A = \lbrace p : p \text{ is an interior point of } A \rbrace$$
+            </p>
+        </div> 
+        <div class="def" id="def_exteriorpt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is an <b>exterior point</b> of \(A\)
+                iff there exists a neighborhood around \(p\) countained outside \(A\).
+                $$p \text{ is an exterior point of } A \iff \exists \varepsilon \gt 0, N(p,\varepsilon) \subset A^c$$
+            </p>
+        </div>
+        <div class="def" id="def_exterior">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). The <b>exterior</b> of \(A\) is the set of all exterior points of \(A\), 
+                and is denoted \(\operatorname{ext} A\)
+                $$\operatorname{ext} A = \lbrace p : p \text{ is an exterior point of } A \rbrace$$
+            </p>
+        </div>
+        <div class="def" id="def_boundarypt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is a <b>boundary point</b> of \(A\)
+                iff every neighborhood around \(p\) contains points inside of \(A\) and outside of \(A\).
+                $$\forall \varepsilon \gt 0, N(p,\varepsilon) \cap A \neq \emptyset \text{ and } 
+                N(p,\varepsilon) \cap A^c \neq \emptyset$$
+            </p>
+        </div>
+        <div class="def" id="def_boundary">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). The <b>boundary</b> of \(A\) is the set of all boundary points of \(A\), 
+                and is denoted \(\partial A\)
+                $$\partial A = \lbrace p : p \text{ is an boundary point of } A \rbrace$$
+            </p>
+        </div>
+        <div class="def" id="def_adherentpt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is an <b>adherent point</b> of \(A\)
+                iff every neighborhood around \(p\) contains a point in \(A\).
+                $$p \text{ is an adherent point of } A \iff \forall \varepsilon \gt 0, N(p,\varepsilon) \cap A \neq \emptyset$$
+            </p>
+        </div>
+        <div class="def" id="def_accumulationpt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is an <b>accumulation point</b> of \(A\)
+                iff every neighborhood around \(p\) contains a point in \(A\) that are not \(p\).
+                $$p \text{ is an accumulation point of } A \iff \forall \varepsilon \gt 0, (N(p,\varepsilon) \setminus \lbrace p \rbrace) \cap A \neq \emptyset$$
+            </p>
+        </div>
+        <div class="def" id="def_isolatedpt">
+            <p>
+                Let \(A\) be a subset of \(\mathbb{R}\). \(p \in \mathbb{R}\) is an <b>isolated point</b> of \(A\)
+                iff \(p \in A\) and there exists a neighborhood around \(p\) with no other point in \(A\).
+                The second condition is equivilant to saying \(p\) is not an accumulation point
+                $$p \text{ is an isolated point of } A 
+                \iff \exists \varepsilon \gt 0, (N(p,\varepsilon) \setminus \lbrace p \rbrace) \cap A = \emptyset
+                \iff p \in A \text{ and } p \text{ is not an accumulation point}$$
+            </p>
+        </div>
+
+               
+        <div class="def" id="def_open">
+            <p>
+                A set of real numbers \(A\) is <b>open</b> 
+                iff all the points in \(A\) are interior points of \(A\) 
+                iff \(A\) does not contain its boundaries. 
+                
+                $$A \text{ is open} \iff A = \operatorname{int} A \iff A \cap \partial A = \emptyset$$
+            
+            </p>
+            <p>
+                Proof \(A = \operatorname{int} A \iff A \cap \partial A = \emptyset\).
+            </p>
+            <p>
+                Let \(A = \operatorname{int} A\). Any \(p \in A\) has a neighborhood contained in \(A\) with no members in \(A^c\).
+                This means that no \(p \in A\) is a boundary point, so \(A \cap \partial A = \emptyset\).
+            </p>
+            <p>
+                Let \(A \cap \partial A = \emptyset\).
+            </p>
+
+
+        </div>
+
+    </div>
+</body>
